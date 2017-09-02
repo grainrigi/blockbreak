@@ -1,14 +1,27 @@
 @startuml
 
 ReflectorCollection "1" *-- "..*" Reflector
-Ball --> ReflectorCollection : Reflectorを取得
+CollisionManager --> ReflectorCollection : Reflectorを取得
 
-Ball : getRect()
-Ball : move()
+Ball --> CollisionManager : executeCollision
+CollisionManager --> Ball : getRect
 
-ReflectorCollection : addReflector()
-ReflectorCollection : removeReflector()
 
-Reflector : getRect()
+class Ball {
+	+getRect()
+	+giveImpulse()
+}
 
+class ReflectorCollection {
+	+addReflector()
+	+removeReflector()
+}
+
+class CollisionManager {
+	+executeCollision(Ball)
+}
+
+class Reflector {
+	+getRect()
+}
 @enduml
