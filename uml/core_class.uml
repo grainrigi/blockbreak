@@ -1,15 +1,33 @@
 @startuml
 
 ReflectorCollection "1" *-- "..*" Reflector
-CollisionManager --> ReflectorCollection : Reflectorを取得
+CollisionManager ->  ReflectorCollection : Reflectorを取得
+CollisionManager --> Reflector : collide\ngetRect
 
-Ball --> CollisionManager : executeCollision
-CollisionManager --> Ball : getRect
+Subject <|-- Ball
+Observer <|.. CollisionManager
 
+Subject "1" *- "..*" Observer
+Ball <- CollisionManager : getRect\ngiveImpulse
 
-class Ball {
+abstract Subject <<Subject>> {
+	+addObserver()
+	+removeObserver()
+	+notifyObservers()
+}
+
+interface Observer <<Observer>> {
+	+update()
+}
+
+class Ball <<Concrete Subject>> {
 	+getRect()
 	+giveImpulse()
+	+move()
+}
+
+class CollisionManager <<Concrete Observer>> {
+	+update()
 }
 
 class ReflectorCollection {
@@ -17,11 +35,8 @@ class ReflectorCollection {
 	+removeReflector()
 }
 
-class CollisionManager {
-	+executeCollision(Ball)
-}
-
 class Reflector {
+	+collide()
 	+getRect()
 }
 @enduml
