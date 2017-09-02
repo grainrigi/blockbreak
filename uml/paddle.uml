@@ -1,0 +1,19 @@
+@startuml
+start
+if (左キーが押されたか？) then (yes)
+  :パドルを左に動かす;
+else (no)
+endif
+if (右キーが押されたか？) then (yes)
+  :パドルを右に動かす;
+else (no)
+endif
+
+if (壁を突き抜けているか？) then (yes)
+  :位置を修正する;
+else (no)
+endif
+
+stop
+
+@enduml

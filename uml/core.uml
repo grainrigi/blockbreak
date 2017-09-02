@@ -1,0 +1,13 @@
+@startuml
+start
+repeat
+
+:パドルの処理;
+:ボールの処理;
+:ブロックの処理;
+:画面出力;
+
+repeat while(ゲームを終了するか？)
+
+stop
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+start
+if (自身にボールが衝突したか) then (yes)
+  :自身を削除する;
+else (no)
+endif
+
+stop
+@enduml

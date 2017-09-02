@@ -1,0 +1,14 @@
+@startuml
+start
+:ボールを移動;
+
+repeat
+  :Reflectorを一つ取り出す;
+  if (ボールと衝突したか？) then (yes)
+    :ボールの移動方向を変える;
+  else (no)
+  endif
+repeat while (Reflectorはあまだあるか？)
+
+stop
+@enduml
