@@ -1,3 +1,6 @@
 block
 *.o
 *.png
+
+Makefile.1
+Makefile.2
